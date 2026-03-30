@@ -1,0 +1,9 @@
+<div class="kpi-card">
+  <div class="kpi-label">{{ kpi.title }}</div>
+  <div class="kpi-value" [ngClass]="kpi.color">{{ kpi.value }}</div>
+
+  <span class="kpi-badge" [ngClass]="kpi.trend">
+    {{ kpi.trend === 'up' ? '↑' : kpi.trend === 'down' ? '↓' : '—' }}
+    {{ kpi.badge }}
+  </span>
+</div>

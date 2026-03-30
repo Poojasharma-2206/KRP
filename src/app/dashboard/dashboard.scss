@@ -1,0 +1,31 @@
+.dashboard {
+  padding: 16px;
+  background: #0f172a;
+  min-height: 100vh;
+  color: #fff;
+}
+
+/* KPI */
+.kpi-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+/* Charts */
+.charts-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.chart-card {
+  background: #1e293b;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+canvas {
+  height: 260px !important;
+}

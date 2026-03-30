@@ -1,0 +1,23 @@
+<nav class="navbar">
+    <div class="navbar-left">
+      <div class="logo-mark">S</div>
+      <div class="navbar-title">Shakti <span>Pumps</span></div>
+    </div>
+  
+    <div class="navbar-right">
+      <select class="nav-select" [(ngModel)]="selectedCompany">
+        <option>All Companies</option>
+        <option>Shakti North</option>
+        <option>Shakti South</option>
+      </select>
+  
+      <select class="nav-select" [(ngModel)]="selectedDept">
+        <option value="all">All Departments</option>
+        <option>Finance</option>
+        <option>HR</option>
+        <option>Operations</option>
+        <option>IT</option>
+        <option>Sales</option>
+      </select>
+    </div>
+  </nav>

@@ -1,0 +1,28 @@
+<div class="dashboard">
+
+  <!-- ===== KPI SECTION (TOP 4 BOXES) ===== -->
+  <div class="kpi-container">
+    <app-kpi-card title="Total Users" value="1,245"></app-kpi-card>
+    <app-kpi-card title="Active Users" value="845"></app-kpi-card>
+    <app-kpi-card title="Revenue" value="$12,400"></app-kpi-card>
+    <app-kpi-card title="Growth" value="18%"></app-kpi-card>
+  </div>
+
+  <!-- ===== CHART SECTION ===== -->
+  <div class="charts-container">
+
+    <!-- Stacked Bar -->
+    <div class="chart-card">
+      <h3>Risk Activity</h3>
+      <canvas id="stackedBar"></canvas>
+    </div>
+
+    <!-- Grouped Bar -->
+    <div class="chart-card">
+      <h3>Department Comparison</h3>
+      <canvas id="groupedBar"></canvas>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,8 @@
+{
+    "kpis": [
+      { "title": "Active Users", "value": "914", "color": "blue", "badge": "+12%", "trend": "up" },
+      { "title": "Avg Risk Score", "value": "82.4", "color": "yellow", "badge": "+2.1", "trend": "up" },
+      { "title": "Budget Utilization", "value": "78%", "color": "green", "badge": "On track", "trend": "neu" },
+      { "title": "Risk on Target", "value": "-3.05%", "color": "red", "badge": "-3.05%", "trend": "down" }
+    ]
+  }
