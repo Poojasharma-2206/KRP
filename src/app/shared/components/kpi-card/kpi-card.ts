@@ -11,7 +11,8 @@ import { Component, Input } from '@angular/core';
   `,
   styles: [`
     .card {
-      background: #1e293b;
+      background: white;
+      border: 1px solid #e2e8f0;
       padding: 16px;
       border-radius: 12px;
       text-align: center;

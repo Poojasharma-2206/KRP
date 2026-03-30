@@ -21,10 +21,19 @@
     --mono:      'DM Mono', monospace;
   }
   
+  // body {
+  //   background: var(--bg);
+  //   color: var(--text);
+  //   font-family: var(--font);
+  //   font-size: 14px;
+  //   line-height: 1.5;
+  // }
+
   body {
-    background: var(--bg);
-    color: var(--text);
+    background: #f1f5f9;   /* light grey background */
+    color: #4f8ef7;
     font-family: var(--font);
     font-size: 14px;
     line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
   }

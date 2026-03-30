@@ -12,3 +12,4 @@ export class NavbarComponent {
   selectedCompany = 'All Companies';
   selectedDept = 'all';
 }
+

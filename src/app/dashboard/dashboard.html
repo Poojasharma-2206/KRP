@@ -1,35 +1,104 @@
 <div class="dashboard">
-<div  class="main">
-  <div class="live">Live Overview</div>
-
-  <div class="heading">
-    <h3>Department All Departments & Performance Overview</h3>
-  </div>
-  <!-- ===== KPI SECTION (TOP 4 BOXES) ===== -->
-  <div class="kpi-container">
-    <app-kpi-card title="Employee Count" value="1,245"></app-kpi-card>
-    <app-kpi-card title="Average KRA Score" value="845"></app-kpi-card>
-    <app-kpi-card title="Budget Utilization" value="$12,400"></app-kpi-card>
-    <app-kpi-card title="KRA vs Target" value="18%"></app-kpi-card>
-  </div>
-
-  <!-- ===== CHART SECTION ===== -->
-  <div class="charts-container">
-
-    <!-- Stacked Bar -->
-    <div class="chart-card">
-      <h3>Risk Activity</h3>
-      <canvas id="stackedBar"></canvas>
+  <div class="main">
+    <div class="live">Live Overview</div>
+    <div class="heading">
+      <h3>Department — All Departments &amp; Performance Overview</h3>
     </div>
 
-    <!-- Grouped Bar -->
-    <div class="chart-card">
-      <h3>Department Comparison</h3>
-      <canvas id="groupedBar"></canvas>
+    <!-- KPI CARDS -->
+    <div class="kpi-container">
+      <app-kpi-card title="Employee Count" value="1,245"></app-kpi-card>
+      <app-kpi-card title="Average KRA Score" value="84.5"></app-kpi-card>
+      <app-kpi-card title="Budget Utilization" value="$12,400"></app-kpi-card>
+      <app-kpi-card title="KRA vs Target" value="18%"></app-kpi-card>
     </div>
 
+    <!-- ROW 1: 2 Bar Charts -->
+    <div class="charts-container">
+      <div class="chart-card">
+        <h3>Risk Activity</h3>
+        <div class="chart-wrap"><canvas id="stackedBar"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3>Department Comparison</h3>
+        <div class="chart-wrap"><canvas id="groupedBar"></canvas></div>
+      </div>
+    </div>
+
+    <!-- ROW 2: Donut + Gauge + Line -->
+    <div class="charts-row-3">
+      <div class="chart-card">
+        <div class="chart-card-header">
+          <h3>KRA distribution across departments</h3>
+        </div>
+        <div class="donut-wrap"><canvas id="kraDonut"></canvas></div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-card-header">
+          <h3>Department KRA gauge</h3>
+        </div>
+        <p class="gauge-subtitle">All departments</p>
+        <div class="gauge-wrap">
+          <canvas id="kraGauge"></canvas>
+          <div class="gauge-center-text">
+            <span class="gauge-value">82.40%</span>
+            <span class="gauge-label">AVG. KRA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-card-header">
+          <h3>KRA vs memo volume by department</h3>
+        </div>
+        <div class="chart-wrap"><canvas id="kraLineChart"></canvas></div>
+      </div>
+    </div>
+
+    <!-- ROW 3: Policy Donut + Table -->
+    <div class="charts-row-bottom">
+      <div class="chart-card">
+        <div class="chart-card-header">
+          <h3>Policy compliance status</h3>
+        </div>
+        <div class="donut-wrap"><canvas id="policyDonut"></canvas></div>
+      </div>
+
+      <div class="table-card">
+        <div class="table-header">
+          <div class="table-title-wrap">
+            <div>
+              <h3>Department summary</h3>
+              <p>Company &amp; department metrics for the current scope</p>
+            </div>
+          </div>
+        </div>
+        <table class="dept-table">
+          <thead>
+            <tr>
+              <th>DEPARTMENT</th>
+              <th>EMP COUNT</th>
+              <th>AVG KRA</th>
+              <th>BUDGET %</th>
+              <th>POLICIES</th>
+              <th>MEMOS</th>
+              <th>VISION SCORE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of tableRows">
+              <td>{{ row.department }}</td>
+              <td>{{ row.empCount }}</td>
+              <td [style.color]="row.kraColor">{{ row.avgKra }}</td>
+              <td>{{ row.budget }}</td>
+              <td>{{ row.policies }}</td>
+              <td>{{ row.memos }}</td>
+              <td>{{ row.visionScore }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-
-</div>
-
 </div>
