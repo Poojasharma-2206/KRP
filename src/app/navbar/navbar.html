@@ -1,28 +1,28 @@
 <nav class="navbar">
-    <div class="navbar-left">
-      <div class="logo-mark">S</div>
-      <div class="navbar-title">Shakti <span>Pumps</span></div>
-    </div>
-  
-    <div class="navbar-right">
-      <select class="nav-select" [(ngModel)]="selectedCompany">
-        <option>All Companies</option>
-        <option>Shakti Pump PVT Limited</option>
-        <option>Astra Energy Systems</option>
-      </select>
-  
-      <select class="nav-select" [(ngModel)]="selectedDept">
-        <option value="all">All Departments</option>
-        <option>Finance</option>
-        <option>HR</option>
-        <option>Account</option>
-        <option>Sales</option>
-        <option>Marketing</option>
-        <option>IT</option>
-        <option>Operations</option>
-        <option>Supports</option>
-        <option>Administration</option>
-        <option>Procrument</option>
-      </select>
-    </div>
-  </nav>
+  <div class="navbar-left">
+    <div class="logo-mark">S</div>
+    <div class="navbar-title">Shakti <span>Pumps</span></div>
+  </div>
+
+  <div class="navbar-right">
+    <select class="nav-select" [(ngModel)]="selectedCompany">
+      <option>All Companies</option>
+      <option>Shakti Pump PVT Limited</option>
+      <option>Astra Energy System</option>
+    </select>
+
+    <select class="nav-select" [(ngModel)]="selectedDept" (change)="onDeptChange()">
+      <option value="all">All Departments</option>
+      <option value="Finance">Finance</option>
+      <option value="HR">HR</option>
+      <option value="Account">Account</option>
+      <option value="Sales">Sales</option>
+      <option value="Marketing">Marketing</option>
+      <option value="IT">IT</option>
+      <option value="Operations">Operations</option>
+      <option value="Support">Support</option>
+      <option value="Administration">Administration</option>
+      <option value="Procurement">Procurement</option>
+    </select>
+  </div>
+</nav>

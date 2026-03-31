@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { DashboardComponent } from './dashboard/dashboard';
+import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NavbarComponent, DashboardComponent],
+  imports: [RouterOutlet, NavbarComponent],
   template: `
     <app-navbar></app-navbar>
-    <app-dashboard></app-dashboard>
-  `
+    <router-outlet></router-outlet>
+  `,
 })
 export class App {}

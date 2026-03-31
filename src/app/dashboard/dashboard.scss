@@ -1,5 +1,6 @@
 .dashboard {
   padding: 16px;
+  padding-top: 76px;   // ← yeh add karo — navbar ki height jitna
   min-height: 100vh;
   color: #0f172a;
   background: #f1f5f9;
@@ -70,10 +71,10 @@
   position: relative;
   height: 260px;
 
-  canvas {
-    width: 100% !important;
-    height: 100% !important;
-  }
+  // canvas {
+  //   width: 100% !important;
+  //   height: 100% !important;
+  // }
 }
 
 /* ── ROW 2: 3 columns ── */
@@ -87,10 +88,10 @@
   position: relative;
   height: 260px;
 
-  canvas {
-    width: 100% !important;
-    height: 100% !important;
-  }
+  // canvas {
+  //   width: 100% !important;
+  //   height: 100% !important;
+  // }
 }
 
 /* ── GAUGE ── */
@@ -108,13 +109,13 @@
   margin: 0 auto;
   overflow: hidden;
 
-  canvas {
-    width: 200px !important;
-    height: 200px !important;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
+  // canvas {
+  //   // width: 200px !important;
+  //   // height: 200px !important;
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  // }
 }
 
 .gauge-center-text {
@@ -211,4 +212,8 @@
       font-weight: 500;
     }
   }
+}
+
+canvas {
+  display: block;
 }
