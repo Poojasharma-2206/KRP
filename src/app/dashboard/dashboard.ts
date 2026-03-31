@@ -1,7 +1,8 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, inject } from '@angular/core';
 import { NgFor } from '@angular/common';
 import Chart from 'chart.js/auto';
 import { KpiCardComponent } from '../shared/components/kpi-card/kpi-card';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,6 +12,8 @@ import { KpiCardComponent } from '../shared/components/kpi-card/kpi-card';
   styleUrls: ['./dashboard.scss'],
 })
 export class DashboardComponent implements AfterViewInit {
+  private router = inject(Router);
+
   tableRows = [
     {
       department: 'HR',
@@ -98,6 +101,10 @@ export class DashboardComponent implements AfterViewInit {
     this.loadCharts();
   }
 
+  goToEmployees() {
+    this.router.navigate(['/employees']);
+  }
+
   loadCharts() {
     const depts = [
       'HR',
@@ -109,8 +116,8 @@ export class DashboardComponent implements AfterViewInit {
       'Support',
       'Administration',
     ];
-     const gridColor = 'rgba(0,0,0,0.06)';    // ← dark tha, ab light
-  const tickColor = '#64748b';
+    const gridColor = 'rgba(0,0,0,0.06)'; // ← dark tha, ab light
+    const tickColor = '#64748b';
 
     // ── STACKED BAR ──
     new Chart('stackedBar', {

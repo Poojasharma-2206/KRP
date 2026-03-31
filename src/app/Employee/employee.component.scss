@@ -1,0 +1,32 @@
+.employee-page {
+    padding: 20px;
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+  
+      th, td {
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+  
+      th {
+        background: #3b82f6;
+        color: white;
+      }
+    }
+  
+    .filter {
+      margin-bottom: 12px;
+    }
+  
+    .employee-detail {
+      margin-top: 20px;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #f8fafc;
+    }
+  }
