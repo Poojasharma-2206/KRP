@@ -1,8 +1,6 @@
 import { Component, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 
 interface Employee {
@@ -25,11 +23,15 @@ interface Employee {
   styleUrls: ['./employee.component.scss'],
 })
 export class EmployeeComponent {
-  selectedDept = signal('All'); // latest reactive signal
-  selectedEmployee = signal<Employee | null>(null);
+  constructor(private router: Router) {}
 
-  departments = ['All', 'IT'];
+  // 🔹 Filters
+  searchText = signal('');
+  selectedDept = signal('dept');
+  selectedCompany = signal('company');
+  selectedDesignation = signal('designation');
 
+  // 🔹 Data
   employees: Employee[] = [
     {
       id: 1,
@@ -46,29 +48,36 @@ export class EmployeeComponent {
       id: 2,
       name: 'Alice',
       designation: 'Manager',
-      company: 'ABC',
+      company: 'XYZ',
       phone: '8888888888',
       department: 'HR',
       reportingManager: 'Bob',
       salary: 60000,
       joiningDate: '2022-07-15',
     },
-    // aur bhi data add kar
   ];
 
-  filteredEmployees = computed(() => {
-    if (this.selectedDept() === 'All') return this.employees;
-    return this.employees.filter((emp) => emp.department === this.selectedDept());
-  });
-  // router: any;
-  constructor(private router: Router) {}
+  // 🔹 Dropdown Data
+  departments = ['dept', ...new Set(this.employees.map(e => e.department))];
+  companies = ['company', ...new Set(this.employees.map(e => e.company))];
+  designations = ['designation', ...new Set(this.employees.map(e => e.designation))];
 
+  // 🔹 Filter Logic
+  filteredEmployees = computed(() => {
+    return this.employees.filter(emp =>
+      (this.selectedDept() === 'All' || emp.department === this.selectedDept()) &&
+      (this.selectedCompany() === 'All' || emp.company === this.selectedCompany()) &&
+      (this.selectedDesignation() === 'All' || emp.designation === this.selectedDesignation()) &&
+      emp.name.toLowerCase().includes(this.searchText().toLowerCase())
+    );
+  });
+
+  // 🔹 Navigation
   viewDetails(emp: Employee) {
-    // this.selectedEmployee.set(emp);
     this.router.navigate(['/employee', emp.id]);
   }
 
-  closeDetails() {
-    this.selectedEmployee.set(null);
+  goBack() {
+    this.router.navigate(['/']);
   }
 }

@@ -1,12 +1,27 @@
 <div class="employee-page">
-  <h2>Employeess</h2>
-  
-  <div class="filter">
-    <label>Filter by Department:</label>
-    <!-- <select [ngModel]="selectedDept()" (ngModelChange)="selectedDept.set($event)">
-      <option *ngFor="let dept of departments" [value]="dept">{{ dept }}</option>
-    </select> -->
+  <div class="top-bar">
+    <button class="back-btn" (click)="goBack()">⬅ Back</button>
+
+    <input
+      type="text"
+      placeholder="Search by name..."
+      [ngModel]="searchText()"
+      (ngModelChange)="searchText.set($event)"
+    />
+
+    <select [ngModel]="selectedDept()" (ngModelChange)="selectedDept.set($event)">
+      <option *ngFor="let d of departments" [value]="d">{{ d }}</option>
+    </select>
+
+    <select [ngModel]="selectedCompany()" (ngModelChange)="selectedCompany.set($event)">
+      <option *ngFor="let c of companies" [value]="c">{{ c }}</option>
+    </select>
+
+    <select [ngModel]="selectedDesignation()" (ngModelChange)="selectedDesignation.set($event)">
+      <option *ngFor="let d of designations" [value]="d">{{ d }}</option>
+    </select>
   </div>
+
   <table>
     <thead>
       <tr>
@@ -17,26 +32,17 @@
         <th>Action</th>
       </tr>
     </thead>
+
     <tbody>
       <tr *ngFor="let emp of filteredEmployees()">
         <td>{{ emp.id }}</td>
         <td>{{ emp.name }}</td>
         <td>{{ emp.designation }}</td>
         <td>{{ emp.company }}</td>
-        <td><button (click)="viewDetails(emp)">View</button></td>
+        <td>
+          <button (click)="viewDetails(emp)">View</button>
+        </td>
       </tr>
     </tbody>
   </table>
-  <!-- <div class="employee-detail">
-    <h3>Employee Details</h3>
-    <p><b>ID:</b> {{ selectedEmployee()?.id }}</p>
-    <p><b>Name:</b> {{ selectedEmployee()?.name }}</p>
-    <p><b>Phone:</b> {{ selectedEmployee()?.phone }}</p>
-    <p><b>Department:</b> {{ selectedEmployee()?.department }}</p>
-    <p><b>Designation:</b> {{ selectedEmployee()?.designation }}</p>
-    <p><b>Reporting Manager:</b> {{ selectedEmployee()?.reportingManager }}</p>
-    <p><b>Salary:</b> {{ selectedEmployee()?.salary }}</p>
-    <p><b>Joining Date:</b> {{ selectedEmployee()?.joiningDate }}</p>
-    <button (click)="closeDetails()">Close</button>
-  </div> -->
 </div>
