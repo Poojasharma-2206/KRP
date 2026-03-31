@@ -1,0 +1,37 @@
+<div class="employee-page">
+
+    <h2>Employee Details</h2>
+  
+    <div class="table-wrapper">
+      <table class="employee-table" *ngIf="employee">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Department</th>
+            <th>Designation</th>
+            <th>Manager</th>
+            <th>Salary</th>
+            <th>Joining Date</th>
+          </tr>
+        </thead>
+  
+        <tbody>
+          <tr>
+            <td>{{ employee.id }}</td>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.phone }}</td>
+            <td>{{ employee.department }}</td>
+            <td>{{ employee.designation }}</td>
+            <td>{{ employee.reportingManager }}</td>
+            <td>{{ employee.salary }}</td>
+            <td>{{ employee.joiningDate }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <button class="back-btn" (click)="goBack()">⬅ Back</button>
+  
+  </div>

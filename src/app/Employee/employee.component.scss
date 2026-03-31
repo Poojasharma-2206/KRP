@@ -1,32 +1,74 @@
 .employee-page {
-    padding: 20px;
-  
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 16px;
-  
-      th, td {
-        padding: 8px 12px;
-        border: 1px solid #ddd;
-        text-align: left;
-      }
-  
-      th {
-        background: #3b82f6;
-        color: white;
-      }
+  padding: 24px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #1e293b;
+  background: #f8fafc;
+  min-height: 100vh;
+
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .filter {
+    margin-bottom: 16px;
+
+    label {
+      font-size: 14px;
+      margin-right: 8px;
     }
-  
-    .filter {
-      margin-bottom: 12px;
-    }
-  
-    .employee-detail {
-      margin-top: 20px;
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      background: #f8fafc;
+
+    select {
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: 1px solid #cbd5f5;
+      font-size: 13px;
     }
   }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+    th,
+    td {
+      padding: 12px 14px;
+      text-align: left;
+    }
+
+    th {
+      background: #3b82f6;
+      color: white;
+      font-size: 14px;
+    }
+
+    td {
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 14px;
+    }
+
+    tbody tr:hover {
+      background: #f1f5f9;
+      transition: 0.2s;
+    }
+
+    button {
+      padding: 6px 12px;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+
+      &:hover {
+        background: #2563eb;
+      }
+    }
+  }
+}

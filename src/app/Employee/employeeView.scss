@@ -1,0 +1,66 @@
+.employee-page {
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+    background: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    box-sizing: border-box;
+  
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  }
+  
+  /* Table wrapper for full width */
+  .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  /* FULL TABLE DESIGN */
+  .employee-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; // equal column spacing
+  
+    th, td {
+      border: 2px solid #000; // strong borders
+      padding: 16px; // spacious cells
+      text-align: left;
+      font-size: 15px;
+    }
+  
+    th {
+      background: #e2e8f0;
+      font-weight: 600;
+    }
+  
+    td {
+      background: #fff;
+    }
+  
+    /* zebra rows */
+    tbody tr:nth-child(even) {
+      background: #f8fafc;
+    }
+  
+    /* hover */
+    tbody tr:hover {
+      background: #e2e8f0;
+    }
+  }
+  
+  /* Back button */
+  .back-btn {
+    margin-top: 20px;
+    padding: 10px 18px;
+    border: 2px solid black;
+    background: white;
+    cursor: pointer;
+    font-size: 14px;
+  
+    &:hover {
+      background: #f1f5f9;
+    }
+  }
