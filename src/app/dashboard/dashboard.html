@@ -7,10 +7,10 @@
 
     <!-- KPI CARDS -->
     <div class="kpi-container">
-      <app-kpi-card title="Employee Count" value="1,245" (click)="goToEmployees()" style="cursor: pointer"></app-kpi-card>
-      <app-kpi-card title="Average KRA Score" value="84.5"></app-kpi-card>
-      <app-kpi-card title="Budget Utilization" value="$12,400"></app-kpi-card>
-      <app-kpi-card title="KRA vs Target" value="18%"></app-kpi-card>
+      <app-kpi-card title="Employee Count"     [value]="kpi.employeeCount"    (click)="goToEmployees()" style="cursor: pointer"></app-kpi-card>
+      <app-kpi-card title="Average KRA Score"  [value]="kpi.avgKraScore"></app-kpi-card>
+      <app-kpi-card title="Budget Utilization" [value]="kpi.budgetUtilization"></app-kpi-card>
+      <app-kpi-card title="KRA vs Target"      [value]="kpi.kraVsTarget"></app-kpi-card>
     </div>
 
     <!-- ROW 1: 2 Bar Charts -->
@@ -42,7 +42,7 @@
         <div class="gauge-wrap">
           <canvas id="kraGauge"></canvas>
           <div class="gauge-center-text">
-            <span class="gauge-value">82.40%</span>
+            <span class="gauge-value">{{ kpi.avgKraScore }}</span>
             <span class="gauge-label">AVG. KRA</span>
           </div>
         </div>
@@ -100,5 +100,6 @@
         </table>
       </div>
     </div>
+
   </div>
 </div>

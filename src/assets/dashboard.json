@@ -1,0 +1,80 @@
+{
+  "departments": ["HR", "Accounts", "Sales", "IT", "Operations", "Marketing"],
+
+  "kpi": {
+    "employeeCount": "665",
+    "avgKraScore": "84.5%",
+    "budgetUtilization": "$12,400",
+    "kraVsTarget": "18%"
+  },
+
+  "low": [20, 25, 30, 28, 22, 18],
+  "medium": [30, 20, 25, 32, 27, 24],
+  "high": [10, 15, 20, 14, 12, 9],
+
+  "pending": [3, 2, 4, 1, 5, 2],
+  "policy": [18, 12, 14, 13, 16, 11],
+  "support": [5, 4, 6, 3, 7, 4],
+
+  "kraScore": [85, 80, 82, 86, 78, 88],
+  "memos": [7, 5, 11, 5, 9, 6],
+
+  "kraDonut": [126, 74, 165, 118, 95, 87],
+
+  "table": [
+    {
+      "department": "HR",
+      "empCount": 126,
+      "avgKra": 85,
+      "budget": "72%",
+      "policies": 18,
+      "memos": 7,
+      "visionScore": 91
+    },
+    {
+      "department": "Accounts",
+      "empCount": 74,
+      "avgKra": 80,
+      "budget": "65%",
+      "policies": 12,
+      "memos": 5,
+      "visionScore": 84
+    },
+    {
+      "department": "Sales",
+      "empCount": 165,
+      "avgKra": 82,
+      "budget": "88%",
+      "policies": 14,
+      "memos": 11,
+      "visionScore": 79
+    },
+    {
+      "department": "IT",
+      "empCount": 118,
+      "avgKra": 86,
+      "budget": "61%",
+      "policies": 13,
+      "memos": 5,
+      "visionScore": 93
+    },
+    {
+      "department": "Operations",
+      "empCount": 95,
+      "avgKra": 78,
+      "budget": "79%",
+      "policies": 16,
+      "memos": 9,
+      "visionScore": 76
+    },
+    {
+      "department": "Marketing",
+      "empCount": 87,
+      "avgKra": 88,
+      "budget": "55%",
+      "policies": 11,
+      "memos": 6,
+      "visionScore": 95
+    }
+  ]
+}
