@@ -46,6 +46,8 @@ export class EmployeeDetailComponent implements OnInit {
     this.employee = this.employees.find((e) => e.id === id);
   }
 
+  
+
   goBack() {
     this.router.navigate(['/employees']);
   }
