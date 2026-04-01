@@ -124,29 +124,39 @@ export class DashboardComponent implements OnInit {
         plugins: { legend: { position: 'bottom' } },
       },
     });
+// ── GAUGE ──
+const avgKra = +(data.kraScore.reduce((a: number, b: number) => a + b, 0) / data.kraScore.length).toFixed(1);
 
-    // ── GAUGE ──
-    const avgKra = +(data.kraScore.reduce((a: number, b: number) => a + b, 0) / data.kraScore.length).toFixed(1);
+Chart.getChart('kraGauge')?.destroy();
 
-    new Chart('kraGauge', {
-      type: 'doughnut',
-      data: {
-        datasets: [
-          {
-            data: [avgKra, 100 - avgKra],
-            backgroundColor: ['#10b981', 'rgba(200,200,200,0.15)'],
-            circumference: 180,
-            rotation: 270,
-            borderWidth: 0,
-          },
-        ],
+new Chart('kraGauge', {
+  type: 'doughnut',
+  data: {
+    datasets: [
+      {
+        data: [avgKra, 100 - avgKra],
+        backgroundColor: ['#10b981', 'rgba(200,200,200,0.15)'],
+        circumference: 180,
+        rotation: 270,
+        borderWidth: 0,
+        borderRadius: 6,
       },
-      options: {
-        responsive: true,
-        cutout: '75%',
-        plugins: { legend: { display: false }, tooltip: { enabled: false } },
-      },
-    });
+    ],
+  },
+  options: {
+    responsive: true,
+    cutout: '78%',
+    plugins: {
+      legend: { display: false },
+      tooltip: { enabled: false },
+    },
+    layout: {
+      padding: {
+        bottom: 0,
+      }
+    }
+  },
+});
 
     // ── LINE ──
     new Chart('kraLineChart', {
