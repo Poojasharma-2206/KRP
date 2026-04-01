@@ -1,80 +1,112 @@
 {
-  "departments": ["HR", "Accounts", "Sales", "IT", "Operations", "Marketing"],
-
-  "kpi": {
-    "employeeCount": "665",
-    "avgKraScore": "84.5%",
-    "budgetUtilization": "$12,400",
-    "kraVsTarget": "18%"
-  },
-
-  "low": [20, 25, 30, 28, 22, 18],
-  "medium": [30, 20, 25, 32, 27, 24],
-  "high": [10, 15, 20, 14, 12, 9],
-
-  "pending": [3, 2, 4, 1, 5, 2],
-  "policy": [18, 12, 14, 13, 16, 11],
-  "support": [5, 4, 6, 3, 7, 4],
-
-  "kraScore": [85, 80, 82, 86, 78, 88],
-  "memos": [7, 5, 11, 5, 9, 6],
-
-  "kraDonut": [126, 74, 165, 118, 95, 87],
-
-  "table": [
+  "companies": [
     {
-      "department": "HR",
-      "empCount": 126,
-      "avgKra": 85,
-      "budget": "72%",
-      "policies": 18,
-      "memos": 7,
-      "visionScore": 91
+      "id": 0,
+      "name": "All Companies",
+      "departments": ["HR", "Accounts", "Sales", "IT", "Finance", "Marketing", "Operations", "Legal"],
+      "kpi": {
+        "employeeCount": "1,465",
+        "avgKraScore": "83.2%",
+        "budgetUtilization": "$36,350",
+        "kraVsTarget": "17%"
+      },
+      "low":    [55, 60, 58, 62, 40, 45, 50, 35],
+      "medium": [75, 55, 68, 80, 50, 60, 65, 45],
+      "high":   [25, 35, 42, 32, 20, 28, 30, 18],
+      "pending": [6,  7,  12,  4,  5,  8,  10,  3],
+      "policy":  [48, 35, 44, 40, 28, 32, 38, 22],
+      "support": [12, 13, 15,  9, 10, 12, 16,  7],
+      "kraScore": [85, 80, 82, 86, 74, 80, 78, 90],
+      "memos":    [12, 13, 19, 10,  8, 12, 15,  6],
+      "kraDonut": [316, 219, 353, 248, 155, 165, 205, 110],
+      "table": [
+        { "department": "HR",         "empCount": 316, "avgKra": 85, "budget": "70%", "policies": 48, "memos": 12, "visionScore": 91 },
+        { "department": "Accounts",   "empCount": 219, "avgKra": 80, "budget": "66%", "policies": 35, "memos": 13, "visionScore": 84 },
+        { "department": "Sales",      "empCount": 353, "avgKra": 82, "budget": "81%", "policies": 44, "memos": 19, "visionScore": 79 },
+        { "department": "IT",         "empCount": 248, "avgKra": 86, "budget": "62%", "policies": 40, "memos": 10, "visionScore": 93 },
+        { "department": "Finance",    "empCount": 155, "avgKra": 74, "budget": "71%", "policies": 28, "memos":  8, "visionScore": 78 },
+        { "department": "Marketing",  "empCount": 165, "avgKra": 80, "budget": "55%", "policies": 32, "memos": 12, "visionScore": 85 },
+        { "department": "Operations", "empCount": 205, "avgKra": 78, "budget": "79%", "policies": 38, "memos": 15, "visionScore": 76 },
+        { "department": "Legal",      "empCount": 110, "avgKra": 90, "budget": "52%", "policies": 22, "memos":  6, "visionScore": 96 }
+      ]
     },
     {
-      "department": "Accounts",
-      "empCount": 74,
-      "avgKra": 80,
-      "budget": "65%",
-      "policies": 12,
-      "memos": 5,
-      "visionScore": 84
+      "id": 1,
+      "name": "Shakti Pvt Ltd",
+      "departments": ["HR", "Accounts", "Sales", "IT"],
+      "kpi": {
+        "employeeCount": "483",
+        "avgKraScore": "85.8%",
+        "budgetUtilization": "$14,200",
+        "kraVsTarget": "21%"
+      },
+      "low":    [20, 25, 30, 28],
+      "medium": [30, 20, 25, 32],
+      "high":   [10, 15, 20, 14],
+      "pending": [3,  2,  4,  1],
+      "policy":  [18, 12, 14, 13],
+      "support": [5,  4,  6,  3],
+      "kraScore": [85, 80, 82, 86],
+      "memos":    [7,  5, 11,  5],
+      "kraDonut": [126, 74, 165, 118],
+      "table": [
+        { "department": "HR",       "empCount": 126, "avgKra": 85, "budget": "72%", "policies": 18, "memos":  7, "visionScore": 91 },
+        { "department": "Accounts", "empCount": 74,  "avgKra": 80, "budget": "65%", "policies": 12, "memos":  5, "visionScore": 84 },
+        { "department": "Sales",    "empCount": 165, "avgKra": 82, "budget": "88%", "policies": 14, "memos": 11, "visionScore": 79 },
+        { "department": "IT",       "empCount": 118, "avgKra": 86, "budget": "61%", "policies": 13, "memos":  5, "visionScore": 93 }
+      ]
     },
     {
-      "department": "Sales",
-      "empCount": 165,
-      "avgKra": 82,
-      "budget": "88%",
-      "policies": 14,
-      "memos": 11,
-      "visionScore": 79
+      "id": 2,
+      "name": "ABC Corp",
+      "departments": ["HR", "Finance", "Marketing", "Operations"],
+      "kpi": {
+        "employeeCount": "340",
+        "avgKraScore": "76.0%",
+        "budgetUtilization": "$9,950",
+        "kraVsTarget": "11%"
+      },
+      "low":    [12, 18, 22, 16],
+      "medium": [22, 14, 20, 26],
+      "high":   [9,  14, 16, 12],
+      "pending": [3,  4,  7,  5],
+      "policy":  [12,  9, 14, 11],
+      "support": [4,   6,  5,  8],
+      "kraScore": [76, 72, 78, 68],
+      "memos":    [6,   9,  7, 11],
+      "kraDonut": [95, 80, 95, 70],
+      "table": [
+        { "department": "HR",         "empCount": 95, "avgKra": 76, "budget": "68%", "policies": 12, "memos":  6, "visionScore": 80 },
+        { "department": "Finance",    "empCount": 80, "avgKra": 72, "budget": "74%", "policies":  9, "memos":  9, "visionScore": 75 },
+        { "department": "Marketing",  "empCount": 95, "avgKra": 78, "budget": "58%", "policies": 14, "memos":  7, "visionScore": 83 },
+        { "department": "Operations", "empCount": 70, "avgKra": 68, "budget": "82%", "policies": 11, "memos": 11, "visionScore": 71 }
+      ]
     },
     {
-      "department": "IT",
-      "empCount": 118,
-      "avgKra": 86,
-      "budget": "61%",
-      "policies": 13,
-      "memos": 5,
-      "visionScore": 93
-    },
-    {
-      "department": "Operations",
-      "empCount": 95,
-      "avgKra": 78,
-      "budget": "79%",
-      "policies": 16,
-      "memos": 9,
-      "visionScore": 76
-    },
-    {
-      "department": "Marketing",
-      "empCount": 87,
-      "avgKra": 88,
-      "budget": "55%",
-      "policies": 11,
-      "memos": 6,
-      "visionScore": 95
+      "id": 3,
+      "name": "Zenith Solutions",
+      "departments": ["HR", "IT", "Sales", "Legal"],
+      "kpi": {
+        "employeeCount": "480",
+        "avgKraScore": "89.1%",
+        "budgetUtilization": "$15,200",
+        "kraVsTarget": "22%"
+      },
+      "low":    [23, 17, 28, 19],
+      "medium": [31, 21, 23, 19],
+      "high":   [6,   6,  6,  4],
+      "pending": [1,   1,  2,  1],
+      "policy":  [18, 14, 16, 11],
+      "support": [3,   3,  4,  2],
+      "kraScore": [91, 88, 87, 90],
+      "memos":    [4,   6,  8,  3],
+      "kraDonut": [140, 120, 110, 110],
+      "table": [
+        { "department": "HR",    "empCount": 140, "avgKra": 91, "budget": "60%", "policies": 18, "memos": 4, "visionScore": 95 },
+        { "department": "IT",    "empCount": 120, "avgKra": 88, "budget": "58%", "policies": 14, "memos": 6, "visionScore": 92 },
+        { "department": "Sales", "empCount": 110, "avgKra": 87, "budget": "75%", "policies": 16, "memos": 8, "visionScore": 89 },
+        { "department": "Legal", "empCount": 110, "avgKra": 90, "budget": "52%", "policies": 11, "memos": 3, "visionScore": 96 }
+      ]
     }
   ]
 }

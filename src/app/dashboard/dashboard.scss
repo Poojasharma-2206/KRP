@@ -203,3 +203,30 @@
 canvas {
   display: block;
 }
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.filters {
+  display: flex;
+  gap: 12px;
+
+  select {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    font-size: 14px;
+    color: #334155;
+    background: white;
+    cursor: pointer;
+    outline: none;
+
+    &:focus {
+      border-color: #3b82f6;
+    }
+  }
+}

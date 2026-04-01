@@ -1,13 +1,26 @@
-export interface DashboardData {
+export interface KpiData {
+  employeeCount: string;
+  avgKraScore: string;
+  budgetUtilization: string;
+  kraVsTarget: string;
+}
+
+export interface TableRow {
+  department: string;
+  empCount: number;
+  avgKra: number;
+  budget: string;
+  policies: number;
+  memos: number;
+  visionScore: number;
+  kraColor?: string;
+}
+
+export interface CompanyData {
+  id: number;
+  name: string;
   departments: string[];
-
-  kpi: {
-    employeeCount: string;
-    avgKraScore: string;
-    budgetUtilization: string;
-    kraVsTarget: string;
-  };
-
+  kpi: KpiData;
   low: number[];
   medium: number[];
   high: number[];
@@ -17,14 +30,9 @@ export interface DashboardData {
   kraScore: number[];
   memos: number[];
   kraDonut: number[];
+  table: TableRow[];
+}
 
-  table: {
-    department: string;
-    empCount: number;
-    avgKra: number;
-    budget: string;
-    policies: number;
-    memos: number;
-    visionScore: number;
-  }[];
+export interface DashboardJson {
+  companies: CompanyData[];
 }
