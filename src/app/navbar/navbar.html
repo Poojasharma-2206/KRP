@@ -1,4 +1,4 @@
-<nav class="navbar">
+<!-- <nav class="navbar">
   <div class="navbar-left">
     <div class="logo-mark">S</div>
     <div class="navbar-title" style="color: rgb(31, 31, 252);">Shakti Pumps</div>
@@ -23,6 +23,25 @@
       <option value="Support">Support</option>
       <option value="Administration">Administration</option>
       <option value="Procurement">Procurement</option>
+    </select>
+  </div>
+</nav> -->
+
+<nav class="navbar">
+  <div class="navbar-left">
+    <div class="logo-mark">S</div>
+    <div class="navbar-title" style="color: rgb(31, 31, 252);">Shakti Pumps</div>
+  </div>
+
+  <div class="navbar-right">
+    <select class="nav-select" [(ngModel)]="selectedCompanyId" (change)="onCompanyChange()">
+      <option value="0">All Companies</option>
+      <option *ngFor="let c of allCompanies" [value]="c.id.toString()">{{ c.name }}</option>
+    </select>
+
+    <select class="nav-select" [(ngModel)]="selectedDepartment" (change)="onDepartmentChange()">
+      <option value="All">All Departments</option>
+      <option *ngFor="let d of departments" [value]="d">{{ d }}</option>
     </select>
   </div>
 </nav>

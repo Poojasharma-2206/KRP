@@ -1,30 +1,27 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, effect } from '@angular/core';
 import { NgFor } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import Chart from 'chart.js/auto';
 import { KpiCardComponent } from '../shared/components/kpi-card/kpi-card';
 import { Router } from '@angular/router';
 import { DataService } from '../core/services/data';
+import { FilterService } from '../core/services/filter.service';
 import { CompanyData } from './dashboard.model';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [NgFor, FormsModule, KpiCardComponent],
+  imports: [NgFor, KpiCardComponent],
   templateUrl: './dashboard.html',
   styleUrls: ['./dashboard.scss'],
 })
 export class DashboardComponent implements OnInit {
 
   private dataService = inject(DataService);
+  private filterService = inject(FilterService);
   private router = inject(Router);
 
   allCompanies: CompanyData[] = [];
-  selectedCompanyId: number = 0;
-  selectedDepartment: string = 'All';
-
   tableRows: any[] = [];
-  departments: string[] = [];
 
   kpi = {
     employeeCount: '-',
@@ -33,56 +30,31 @@ export class DashboardComponent implements OnInit {
     kraVsTarget: '-'
   };
 
-  // ngOnInit() {
-  //   this.dataService.getDashboard().subscribe(res => {
-  //     this.allCompanies = res.companies;
-  //     this.applyFilters();
-  //   });
-  // }
-
-  ngOnInit() {
-    console.log('Component loaded!');
-    
-    this.dataService.getDashboard().subscribe({
-      next: (res) => {
-        console.log('SUCCESS:', res);
-        this.allCompanies = res.companies;
-        this.applyFilters();
-      },
-      error: (err) => {
-        console.log('ERROR:', err);
+  constructor() {
+    effect(() => {
+      const companyId = this.filterService.selectedCompanyId();
+      const department = this.filterService.selectedDepartment();
+      if (this.allCompanies.length > 0) {
+        this.applyFilters(companyId, department);
       }
     });
   }
-  getSelectedCompany(): CompanyData {
-    return this.allCompanies.find(c => c.id === this.selectedCompanyId)!;
+
+  ngOnInit() {
+    this.dataService.getDashboard().subscribe({
+      next: (res) => {
+        this.allCompanies = res.companies;
+        this.applyFilters(0, 'All');
+      },
+      error: (err) => console.log('ERROR:', err)
+    });
   }
 
-  onCompanyChange(event: Event) {
-    this.selectedCompanyId = +(event.target as HTMLSelectElement).value;
-    this.selectedDepartment = 'All';
-    this.applyFilters();
-  }
+  applyFilters(companyId: number, department: string) {
+    const company = this.allCompanies.find(c => c.id === companyId);
+    if (!company) return;
 
-  onDepartmentChange(event: Event) {
-    this.selectedDepartment = (event.target as HTMLSelectElement).value;
-    this.applyFilters();
-  }
-
-  applyFilters() {
-    // const company = this.getSelectedCompany();
-    // if (!company) return;
-    console.log('selectedCompanyId:', this.selectedCompanyId);
-  console.log('allCompanies:', this.allCompanies);
-  
-  const company = this.getSelectedCompany();
-  console.log('company found:', company);
-  
-  if (!company) return;
-
-    this.departments = company.departments;
-
-    if (this.selectedDepartment === 'All') {
+    if (department === 'All') {
       this.kpi = { ...company.kpi };
       this.tableRows = company.table.map(row => ({
         ...row,
@@ -91,11 +63,11 @@ export class DashboardComponent implements OnInit {
       setTimeout(() => this.loadCharts(company), 0);
 
     } else {
-      const idx = company.departments.indexOf(this.selectedDepartment);
-      const deptRow = company.table.find(r => r.department === this.selectedDepartment);
+      const idx = company.departments.indexOf(department);
+      const deptRow = company.table.find(r => r.department === department);
 
       const filtered = {
-        departments: [this.selectedDepartment],
+        departments: [department],
         low:      [company.low[idx]],
         medium:   [company.medium[idx]],
         high:     [company.high[idx]],
@@ -108,9 +80,9 @@ export class DashboardComponent implements OnInit {
       };
 
       this.kpi = {
-        employeeCount:     deptRow ? String(deptRow.empCount)  : '-',
-        avgKraScore:       deptRow ? deptRow.avgKra + '%'      : '-',
-        budgetUtilization: deptRow ? deptRow.budget            : '-',
+        employeeCount:     deptRow ? String(deptRow.empCount) : '-',
+        avgKraScore:       deptRow ? deptRow.avgKra + '%'     : '-',
+        budgetUtilization: deptRow ? deptRow.budget           : '-',
         kraVsTarget:       company.kpi.kraVsTarget,
       };
 
