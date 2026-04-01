@@ -4,45 +4,51 @@
 
     <input
       type="text"
+      class="search-input"
       placeholder="Search by name..."
       [ngModel]="searchText()"
       (ngModelChange)="searchText.set($event)"
     />
 
-    <select [ngModel]="selectedDept()" (ngModelChange)="selectedDept.set($event)">
+    <select class="filter-select" [ngModel]="selectedDept()" (ngModelChange)="selectedDept.set($event)">
       <option *ngFor="let d of departments" [value]="d">{{ d }}</option>
     </select>
 
-    <select [ngModel]="selectedCompany()" (ngModelChange)="selectedCompany.set($event)">
+    <select class="filter-select" [ngModel]="selectedCompany()" (ngModelChange)="selectedCompany.set($event)">
       <option *ngFor="let c of companies" [value]="c">{{ c }}</option>
     </select>
 
-    <select [ngModel]="selectedDesignation()" (ngModelChange)="selectedDesignation.set($event)">
+    <select class="filter-select" [ngModel]="selectedDesignation()" (ngModelChange)="selectedDesignation.set($event)">
       <option *ngFor="let d of designations" [value]="d">{{ d }}</option>
     </select>
   </div>
 
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Designation</th>
-        <th>Company</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr *ngFor="let emp of filteredEmployees()">
-        <td>{{ emp.id }}</td>
-        <td>{{ emp.name }}</td>
-        <td>{{ emp.designation }}</td>
-        <td>{{ emp.company }}</td>
-        <td>
-          <button (click)="viewDetails(emp)">View</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-wrapper">
+    <table class="emp-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Department</th>
+          <th>Designation</th>
+          <th>Company</th>
+          <th>Phone</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emp of filteredEmployees()">
+          <td>{{ emp.id }}</td>
+          <td>{{ emp.name }}</td>
+          <td>{{ emp.department }}</td>
+          <td>{{ emp.designation }}</td>
+          <td>{{ emp.company }}</td>
+          <td>{{ emp.phone }}</td>
+          <td>
+            <button class="view-btn" (click)="viewDetails(emp)">View</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

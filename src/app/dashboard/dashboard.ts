@@ -15,7 +15,6 @@ import { CompanyData } from './dashboard.model';
   styleUrls: ['./dashboard.scss'],
 })
 export class DashboardComponent implements OnInit {
-
   private dataService = inject(DataService);
   private filterService = inject(FilterService);
   private router = inject(Router);
@@ -27,7 +26,7 @@ export class DashboardComponent implements OnInit {
     employeeCount: '-',
     avgKraScore: '-',
     budgetUtilization: '-',
-    kraVsTarget: '-'
+    kraVsTarget: '-',
   };
 
   constructor() {
@@ -46,50 +45,54 @@ export class DashboardComponent implements OnInit {
         this.allCompanies = res.companies;
         this.applyFilters(0, 'All');
       },
-      error: (err) => console.log('ERROR:', err)
+      error: (err) => console.log('ERROR:', err),
     });
   }
 
   applyFilters(companyId: number, department: string) {
-    const company = this.allCompanies.find(c => c.id === companyId);
+    const company = this.allCompanies.find((c) => c.id === companyId);
     if (!company) return;
 
     if (department === 'All') {
       this.kpi = { ...company.kpi };
-      this.tableRows = company.table.map(row => ({
+      this.tableRows = company.table.map((row) => ({
         ...row,
-        kraColor: row.avgKra >= 85 ? '#22c55e' : row.avgKra >= 80 ? '#f59e0b' : '#ef4444'
+        kraColor: row.avgKra >= 85 ? '#22c55e' : row.avgKra >= 80 ? '#f59e0b' : '#ef4444',
       }));
       setTimeout(() => this.loadCharts(company), 0);
-
     } else {
       const idx = company.departments.indexOf(department);
-      const deptRow = company.table.find(r => r.department === department);
+      const deptRow = company.table.find((r) => r.department === department);
 
       const filtered = {
         departments: [department],
-        low:      [company.low[idx]],
-        medium:   [company.medium[idx]],
-        high:     [company.high[idx]],
-        pending:  [company.pending[idx]],
-        policy:   [company.policy[idx]],
-        support:  [company.support[idx]],
+        low: [company.low[idx]],
+        medium: [company.medium[idx]],
+        high: [company.high[idx]],
+        pending: [company.pending[idx]],
+        policy: [company.policy[idx]],
+        support: [company.support[idx]],
         kraScore: [company.kraScore[idx]],
-        memos:    [company.memos[idx]],
+        memos: [company.memos[idx]],
         kraDonut: [company.kraDonut[idx]],
       };
 
       this.kpi = {
-        employeeCount:     deptRow ? String(deptRow.empCount) : '-',
-        avgKraScore:       deptRow ? deptRow.avgKra + '%'     : '-',
-        budgetUtilization: deptRow ? deptRow.budget           : '-',
-        kraVsTarget:       company.kpi.kraVsTarget,
+        employeeCount: deptRow ? String(deptRow.empCount) : '-',
+        avgKraScore: deptRow ? deptRow.avgKra + '%' : '-',
+        budgetUtilization: deptRow ? deptRow.budget : '-',
+        kraVsTarget: company.kpi.kraVsTarget,
       };
 
-      this.tableRows = deptRow ? [{
-        ...deptRow,
-        kraColor: deptRow.avgKra >= 85 ? '#22c55e' : deptRow.avgKra >= 80 ? '#f59e0b' : '#ef4444'
-      }] : [];
+      this.tableRows = deptRow
+        ? [
+            {
+              ...deptRow,
+              kraColor:
+                deptRow.avgKra >= 85 ? '#22c55e' : deptRow.avgKra >= 80 ? '#f59e0b' : '#ef4444',
+            },
+          ]
+        : [];
 
       setTimeout(() => this.loadCharts(filtered), 0);
     }
@@ -114,9 +117,9 @@ export class DashboardComponent implements OnInit {
       data: {
         labels: depts,
         datasets: [
-          { label: 'Low',    data: data.low,    backgroundColor: '#22c55e', stack: 'a' },
+          { label: 'Low', data: data.low, backgroundColor: '#22c55e', stack: 'a' },
           { label: 'Medium', data: data.medium, backgroundColor: '#f59e0b', stack: 'a' },
-          { label: 'High',   data: data.high,   backgroundColor: '#ef4444', stack: 'a' },
+          { label: 'High', data: data.high, backgroundColor: '#ef4444', stack: 'a' },
         ],
       },
       options: {
@@ -134,8 +137,8 @@ export class DashboardComponent implements OnInit {
       data: {
         labels: depts,
         datasets: [
-          { label: 'Pending',      data: data.pending, backgroundColor: '#ef4444' },
-          { label: 'Policy focus', data: data.policy,  backgroundColor: '#4f8ef7' },
+          { label: 'Pending', data: data.pending, backgroundColor: '#ef4444' },
+          { label: 'Policy focus', data: data.policy, backgroundColor: '#4f8ef7' },
           { label: 'Support load', data: data.support, backgroundColor: '#f59e0b' },
         ],
       },
@@ -153,10 +156,21 @@ export class DashboardComponent implements OnInit {
       type: 'doughnut',
       data: {
         labels: depts,
-        datasets: [{
-          data: data.kraDonut,
-          backgroundColor: ['#22c55e','#f97316','#ef4444','#3b82f6','#f59e0b','#10b981','#8b5cf6','#ec4899'],
-        }],
+        datasets: [
+          {
+            data: data.kraDonut,
+            backgroundColor: [
+              '#22c55e',
+              '#f97316',
+              '#ef4444',
+              '#3b82f6',
+              '#f59e0b',
+              '#10b981',
+              '#8b5cf6',
+              '#ec4899',
+            ],
+          },
+        ],
       },
       options: {
         responsive: true,
@@ -164,19 +178,23 @@ export class DashboardComponent implements OnInit {
       },
     });
 
-    const avgKra = +(data.kraScore.reduce((a: number, b: number) => a + b, 0) / data.kraScore.length).toFixed(1);
+    const avgKra = +(
+      data.kraScore.reduce((a: number, b: number) => a + b, 0) / data.kraScore.length
+    ).toFixed(1);
 
     new Chart('kraGauge', {
       type: 'doughnut',
       data: {
-        datasets: [{
-          data: [avgKra, 100 - avgKra],
-          backgroundColor: ['#10b981', 'rgba(200,200,200,0.15)'],
-          circumference: 180,
-          rotation: 270,
-          borderWidth: 0,
-          borderRadius: 6,
-        }],
+        datasets: [
+          {
+            data: [avgKra, 100 - avgKra],
+            backgroundColor: ['#10b981', 'rgba(200,200,200,0.15)'],
+            circumference: 180,
+            rotation: 270,
+            borderWidth: 0,
+            borderRadius: 6,
+          },
+        ],
       },
       options: {
         responsive: true,
@@ -222,10 +240,12 @@ export class DashboardComponent implements OnInit {
       type: 'doughnut',
       data: {
         labels: ['Pending', 'Non-compliant', 'Compliant', 'NA'],
-        datasets: [{
-          data: [15, 20, 55, 10],
-          backgroundColor: ['#f59e0b', '#ef4444', '#22c55e', '#94a3b8'],
-        }],
+        datasets: [
+          {
+            data: [15, 20, 55, 10],
+            backgroundColor: ['#f59e0b', '#ef4444', '#22c55e', '#94a3b8'],
+          },
+        ],
       },
       options: {
         responsive: true,
